@@ -29,13 +29,16 @@ class AddToDoListViewController: UIViewController {
         if taskTitleField.text == "" || taskDescrptionField.text == ""{
             dismiss(animated: true, completion: nil)
         }else{
-            let task = ToDoList(context: managedObjectContetext)
+            let task = ToDoListEntity(context: managedObjectContetext)
             task.taskTitle = taskTitleField.text!
             task.taskDescription = taskDescrptionField.text!
             task.taskDate = taskDate.date
             
             
+            
             managedObjectSaveContetext()
+            
+            print(task)
             dismiss(animated: true, completion: nil)
         }
     }

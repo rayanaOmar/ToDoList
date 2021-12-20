@@ -13,10 +13,9 @@ class ToDoListTableViewController: UITableViewController {
     let managedObjectContetext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let managedObjectSaveContetext = (UIApplication.shared.delegate as! AppDelegate).saveContext
     
-    var tasks: [ToDoList] = []
+    var tasks: [ToDoListEntity] = []
     
-   
-    
+ 
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -24,6 +23,7 @@ class ToDoListTableViewController: UITableViewController {
         fetchTaskItem()
         tableView.reloadData()
         
+     
         // Do any additional setup after loading the view.
     }
     
@@ -77,10 +77,10 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     func fetchTaskItem(){
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoList")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoListEntity")
         do{
             let results = try managedObjectContetext.fetch(request)
-            tasks = results as! [ToDoList]
+            tasks = results as! [ToDoListEntity]
         }catch{
             print("\(error)")
         }
